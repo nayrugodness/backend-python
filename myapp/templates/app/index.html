@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hoisu C&R</title>
+
+    {% load static %}
+
+    <link rel="icon" type="image/png" href="{% static 'app/images/chikiswaffles2.png' %}">
+
+    {% block css %}
+    {% endblock %}
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    {% load pwa %}
+
+    {% progressive_web_app_meta %}
+
+</head>
+
+<body>
+    <header class="header">
+        <a href="{% url 'index' %}">
+            <img class="logo" src="{% static 'app/images/HoisuC&R.png' %}" alt="Logo pagina">
+        </a>
+        <div class="nav-bar-header">
+            <ul>
+                <li><a href="{% url 'establecimientos' %}">Establecimientos</a></li>
+                <li><a href="#">Categorias</a></li>
+            </ul>
+        </div>
+    </header>
+{% block destacados %}
+    <section class="destacados">
+
+        {% for e in establecimientos %}
+
+
+            <div class="e-destacado">
+                <img class="e-imagen" src="{{ e.imagen.url }}">
+                <h4 class="titulo">{{ e.nombre }}</h4>
+                <div class="caracteristicas">
+                    <strong><p class="caracteristica">Categoría : {{ e.categoria }}</p></strong>
+                     {% if e.restaurante == True %}
+                        <p class="caracteristica">Tipo : Restaurante </p>
+                    {% endif %}
+                    {% if e.bar == True %}
+                        <p class="caracteristica">Tipo : Bar </p>
+                    {% endif %}
+                    {% if e.cafeteria == True %}
+                        <p class="caracteristica">Tipo : Cafetería </p>
+                    {% endif %}
+                    {% if e.restaurante == True and e.bar == True %}
+                        <p class="caracteristica">Tipo : Restaurante Bar </p>
+                    {% endif %}
+                    <p class="caracteristica">Ciudad : {{ e.ciudad }} </p>
+                    <p class="caracteristica">Departamento : {{ e.departamento }}</p>
+
+                </div>
+
+                {% if user.is_authenticated %}
+                    <button class="btn-ver">Ver establecimiento</button>
+                {% endif %}
+            </div>
+
+        {% endfor %}
+    </section>
+{% endblock %}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {% if messages %}
+
+    {% for m in messages %}
+
+    <script>
+        Swal.fire({
+            'title': 'Felicitaciones',
+            'text': '{{m}}',
+            'icon': 'success'
+        })
+    </script>
+
+    {% endfor %}
+
+    {% endif %}
+
+    {% block js %}
+    <script src="{% static 'app/js/jquery-3.6.0.js' %}"></script>
+    <script src="{% static 'app/js/cerrar_sesion.js' %}"></script>
+    {% endblock js %}
+</body>
+
+</html>

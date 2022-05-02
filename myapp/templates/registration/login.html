@@ -1,0 +1,57 @@
+{% extends 'app/layout.html' %}
+
+    {% load static %}
+
+    {% load crispy_forms_tags %}
+
+    {% block css %}
+        <link rel="stylesheet" href="{% static 'app/css/login.css' %}">
+    {% endblock css %}
+
+    {% block js %}
+        <script src="{% static 'app/js/login.js' %}"></script>
+    {% endblock js %}
+
+
+    {% block contenido_principal %}
+
+<div class="formularios-background">
+
+    <div class="formularios-filtro">
+        <form method="POST" class="formulario">
+
+                    {% csrf_token %}
+
+                        <h2>Login</h2>
+
+                        <div class="user_info">
+
+                        {{ form | crispy }}
+
+                            {% comment %}
+                            <label  for="usernames">
+                                Nombre de usuario
+                            </label>
+                            <input class="campo-input" type="text" id="usernames" name="usernames" required>
+
+                            <label class="campo-input" for="password1">
+                                Contraseña
+                            </label>
+                            <input class type password" id="password1" name="password1" required> {% endcomment %}
+
+                            <input type="submit" value="Iniciar Sesión" id="btnSend">
+
+                        </div>
+
+                        <div class="parrafos">
+
+                            <p>¿No tienes una Cuenta? <a href="{% url 'registro' %}"><span class="fas fa-hand-point-right"></span> Registrate </a></p>
+                        </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+    {% endblock %}
