@@ -34,6 +34,13 @@
             <ul>
                 <li><a href="{% url 'establecimientos' %}">Establecimientos</a></li>
                 <li><a href="#">Categorias</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="#">{{ user.username }}</a></li>
+                <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}">Iniciar sesión</a></li>
+                <li><a href="{% url 'registro' %}">Regístrate</a></li>
+                {% endif %}
             </ul>
         </div>
     </header>
