@@ -8,7 +8,7 @@
 
     {% load static %}
 
-    <link rel="icon" type="image/png" href="{% static 'app/images/chikiswaffles2.png' %}">
+    <link rel="icon" type="image/png" href="{% static 'app/images/HoisuC&R.png' %}">
 
     {% block css %}
     {% endblock %}
@@ -36,7 +36,6 @@
                 <li><a href="#">Categorias</a></li>
                 {% if user.is_authenticated %}
                 <li><a href="#">{{ user.username }}</a></li>
-                <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
                 {% else %}
                 <li><a href="{% url 'login' %}">Iniciar sesión</a></li>
                 <li><a href="{% url 'registro' %}">Regístrate</a></li>
