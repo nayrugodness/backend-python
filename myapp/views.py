@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from .models import Categorias, Establecimientos
 from .forms import ContactoForm, EstablecimientosForm, CustomUserCreationForm
 from django.contrib import messages
@@ -49,6 +49,20 @@ def contacto(request):
 
     return render(request, 'app/contacto.html', data)
 
+
+def detail(request, slug):
+    q = Establecimientos.objects.filter(slug__iexact=slug)
+
+
+    if q.exists():
+        q = q.first()
+    else:
+        return HttpResponse('<h1>No se encontró el establecimiento </h1>')
+    context = {
+
+        'post': q
+    }
+    return render(request, 'productos/detalle.html', context)
 
 def registro(request):
     data = {

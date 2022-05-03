@@ -20,7 +20,7 @@
                         <p class="caracteristica">Departamento : {{ e.departamento }}</p>
                         <p class="caracteristica">Ciudad : {{ e.ciudad }} </p>
                         <p class="caracteristica">Rango de precios : {{ e.rango_precios }}</p>
-
+                        <a href=”/posts/{{ e.slug }}” class=”btn btn-primary”>View</a>
                     </div>
 
                     {% if user.is_authenticated %}
