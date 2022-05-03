@@ -38,7 +38,7 @@ class Establecimientos(models.Model):
     tarjeta_credito = models.BooleanField()
     tarjetas_debito = models.BooleanField()
     descripcion = models.TextField()
-    tipo = models.CharField(max_length=10, choices=TIPO_ESTABLECIMIENTO, default='Restaurante')
+    tipo = models.CharField(max_length=20, choices=TIPO_ESTABLECIMIENTO, default='Restaurante')
     direccion = models.CharField(max_length=50)
     imagen = models.ImageField(upload_to='productos', null=True)
     slug = models.SlugField(max_length=250, null=True, blank=True)
