@@ -26,6 +26,23 @@ TIPO_ESTABLECIMIENTO = (
    ('Bar', 'Bar'),
    ('CafeBar', 'CafeBar')
 )
+class Comida(models.Model):
+    id = models.AutoField(primary_key=True)
+    nombre = models.CharField(max_length=50)
+    descripcion = models.TextField()
+    precio = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.nombre
+
+class Menu(models.Model):
+    id = models.AutoField(primary_key=True)
+    nombre = models.SlugField(max_length=250, null=False, blank=True)
+    items = models.ManyToManyField('Comida', related_name='comida', blank=True)
+    imagen = models.ImageField(upload_to='productos', null=False)
+
+    def __str__(self):
+        return self.id, self.nombre
 
 class Establecimientos(models.Model):
     id = models.AutoField(primary_key=True)
