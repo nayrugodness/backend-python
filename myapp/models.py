@@ -48,7 +48,8 @@ TIPO_ESTABLECIMIENTO = (
    ('CafeBar', 'CafeBar')
 )
 class Establecimientos(models.Model):
-    nombre = models.CharField(max_length=50, primary_key=True)
+    id = models.AutoField(primary_key=True)
+    nombre = models.CharField(max_length=50)
     categoria = models.ForeignKey(Categorias, on_delete=models.PROTECT)
     servicios = models.ForeignKey(Servicios, on_delete=models.PROTECT)
     ciudad = models.CharField(max_length=40)

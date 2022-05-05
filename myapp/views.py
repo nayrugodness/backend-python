@@ -8,6 +8,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required, permission_required
 from rest_framework import viewsets
 from .serializers import EstablecimientosSerializer, CategoriasSerializer
+from django.views.generic import ListView, CreateView, DetailView
 
 # Create your views here.
 
@@ -50,19 +51,14 @@ def contacto(request):
     return render(request, 'app/contacto.html', data)
 
 
-def detail(request, slug):
-    q = Establecimientos.objects.filter(slug__iexact=slug)
+class EstablecimientoDetailView(DetailView):
 
+    template_name = 'app/detalle.html'
+    queryset = Establecimientos.objects.all()
+    def get_object(self):
+        slug = self.kwargs.get('slug')
+        return get_object_or_404(Establecimientos, slug=slug)
 
-    if q.exists():
-        q = q.first()
-    else:
-        return HttpResponse('<h1>No se encontró el establecimiento </h1>')
-    context = {
-
-        'post': q
-    }
-    return render(request, 'productos/detalle.html', context)
 
 def registro(request):
     data = {
