@@ -30,13 +30,26 @@
 }
 .menu-e{
    display:flex;
-    width: 65vw;
+    width: 60vw;
     padding: 2rem;
+    border: 1px solid black;
+    margin-bottom:2rem;
+}
+.contenedor-secundario{
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 30vw;
     border: 1px solid black;
 }
-.bloque-derecho{
-   display:flex;
-    width: 30vw;
-    padding: 2rem;
+.horario{
+    width: 100%;
     border: 1px solid black;
+}
+.foto-e{
+    width: 100%;
+    border: 1px solid black;
+}
+.foto{
+    width: 100%;
 }
