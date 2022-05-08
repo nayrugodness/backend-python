@@ -1,5 +1,5 @@
 from django import forms
-from .models import Contacto, Establecimientos
+from .models import Contacto, Reserva, Establecimientos, Menu, Comida
 from django.db.models import fields
 from django.forms import widgets, ValidationError
 from django.contrib.auth.forms import UserCreationForm
@@ -13,13 +13,30 @@ class ContactoForm(forms.ModelForm):
         model = Contacto
         fields = '__all__'
 
+class ReservaForm(forms.ModelForm):
+
+    class Meta:
+        model = Reserva
+        fields = '__all__'
+
+class Menu(forms.ModelForm):
+
+    class Meta:
+        model = Menu
+        fields = '__all__'
+
+class Comida(forms.ModelForm):
+
+    class Meta:
+        model = Comida
+        fields = '__all__'
+
 
 class EstablecimientosForm(forms.ModelForm):
 
     nombre = forms.CharField(min_length=3, max_length=50)
     imagen = forms.ImageField(required=False, validators=[
                               MaxSizeFileValidator(max_file_size=16)])
-    precio = forms.IntegerField(min_value=1, max_value=1500000)
 
     # def clean_nombre(self):
     #     nombre = self.cleaned_data['nombre']

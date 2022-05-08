@@ -13,7 +13,7 @@ router.register('categoria', views.CategoriasViewset)
 urlpatterns = [
     path('', views.index, name='index'),
     path('establecimientos/', views.establecimientos, name='establecimientos'),
-    path('<slug:slug>', views.EstablecimientoDetailView.as_view(), name='detalle'),
+    path('establecimiento/<slug:slug>', views.EstablecimientoDetailView.as_view(), name='detalle'),
     path('contacto/', views.contacto, name='contacto'),
     path('registro/', views.registro, name='registro'),
     path('agregar-establecimiento/', views.agregar_producto, name='agregar_establecimiento'),
