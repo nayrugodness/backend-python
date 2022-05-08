@@ -24,7 +24,7 @@
 
                         <h2>Login</h2>
 
-                        <div class="user_info">
+                        <div class="">
 
                         {{ form | crispy }}
 
@@ -39,13 +39,13 @@
                             </label>
                             <input class type password" id="password1" name="password1" required> {% endcomment %}
 
-                            <input type="submit" value="Iniciar Sesión" id="btnSend">
+                            <input type="submit" value="Iniciar Sesión" id="btnSend" class="btnLogin">
 
                         </div>
 
-                        <div class="parrafos">
+                        <div class="">
 
-                            <p>¿No tienes una Cuenta? <a href="{% url 'registro' %}"><span class="fas fa-hand-point-right"></span> Registrate </a></p>
+                            <p>¿No tienes una Cuenta? <a class="btn-sec" href="{% url 'registro' %}"> Registrate </a></p>
                         </div>
         </form>
     </div>

@@ -26,11 +26,14 @@ TIPO_ESTABLECIMIENTO = (
    ('Bar', 'Bar'),
    ('CafeBar', 'CafeBar')
 )
+
+
 class Comida(models.Model):
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=50)
     descripcion = models.TextField()
     precio = models.CharField(max_length=20)
+    imagen = models.ImageField(upload_to='establecimientos/platillo', null=False)
 
     def __str__(self):
         return self.nombre
@@ -38,17 +41,18 @@ class Comida(models.Model):
 class Menu(models.Model):
     id = models.AutoField(primary_key=True)
     nombre = models.SlugField(max_length=250, null=False, blank=True)
-    items = models.ManyToManyField('Comida', related_name='comida', blank=True)
-    imagen = models.ImageField(upload_to='productos', null=False)
+    comida = models.ManyToManyRel(to=Comida, field=id)
 
     def __str__(self):
-        return self.id, self.nombre
+        return self.nombre
+
 
 class Establecimientos(models.Model):
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=50)
     categoria = models.ForeignKey(Categorias, on_delete=models.PROTECT)
     servicios = models.ForeignKey(Servicios, on_delete=models.PROTECT)
+    menu = models.ForeignKey(Menu, on_delete=models.PROTECT)
     ciudad = models.CharField(max_length=40)
     departamento = models.CharField(max_length=40)
     rango_precios = models.CharField(max_length=50)
@@ -59,8 +63,8 @@ class Establecimientos(models.Model):
     descripcion = models.TextField()
     tipo = models.CharField(max_length=20, choices=TIPO_ESTABLECIMIENTO, default='Restaurante')
     direccion = models.CharField(max_length=50)
-    imagen = models.ImageField(upload_to='productos', null=False)
-    imagen_banner = models.ImageField(upload_to='productos', null=False)
+    imagen = models.ImageField(upload_to='establecimientos/foto-principal', null=False)
+    imagen_banner = models.ImageField(upload_to='establecimientos/banner', null=False)
     slug = models.SlugField(max_length=250, null=False, blank=True)
 
     def __str__(self):
@@ -68,11 +72,7 @@ class Establecimientos(models.Model):
 
 
 
-@receiver(pre_save, sender=Establecimientos)
-def pre_save_receiver(sender, instance, *args, **kwargs):
 
-   if not instance.slug:
-       instance.slug = unique_slug_generator(instance)
 class Contacto(models.Model):
     nombre = models.CharField(max_length=50)
     telefono = models.IntegerField()
