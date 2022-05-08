@@ -31,40 +31,27 @@ class Comida(models.Model):
     nombre = models.CharField(max_length=50)
     descripcion = models.TextField()
     precio = models.CharField(max_length=20)
-<<<<<<< HEAD
     imagen = models.ImageField(upload_to='establecimientos/platillo', null=False)
-=======
-    imagen = models.ImageField(upload_to='establecimiento/comida', null=False)
->>>>>>> 4fd5d7e9d25e244a5947246e4a8acce786c89eea
+
 
     def __str__(self):
         return self.nombre
 
 class Menu(models.Model):
     id = models.AutoField(primary_key=True)
-<<<<<<< HEAD
+
     nombre = models.SlugField(max_length=250, null=False, blank=True)
     comida = models.ManyToManyRel(to=Comida, field=id)
 
     def __str__(self):
         return self.nombre
 
-=======
-    items = models.ManyToManyField('Comida', related_name='comida', blank=True)
 
-    def __str__(self):
-        return self.id, self.items
->>>>>>> 4fd5d7e9d25e244a5947246e4a8acce786c89eea
 
 class Establecimientos(models.Model):
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=50)
     categoria = models.ForeignKey(Categorias, on_delete=models.PROTECT)
-<<<<<<< HEAD
-    servicios = models.ForeignKey(Servicios, on_delete=models.PROTECT)
-=======
-    servicios = models.ManyToManyField('Servicios', related_name='servicio', blank=True)
->>>>>>> 4fd5d7e9d25e244a5947246e4a8acce786c89eea
     menu = models.ForeignKey(Menu, on_delete=models.PROTECT)
     ciudad = models.CharField(max_length=40)
     departamento = models.CharField(max_length=40)
@@ -76,13 +63,8 @@ class Establecimientos(models.Model):
     descripcion = models.TextField()
     tipo = models.CharField(max_length=20, choices=TIPO_ESTABLECIMIENTO, default='Restaurante')
     direccion = models.CharField(max_length=50)
-<<<<<<< HEAD
     imagen = models.ImageField(upload_to='establecimientos/foto-principal', null=False)
     imagen_banner = models.ImageField(upload_to='establecimientos/banner', null=False)
-=======
-    imagen = models.ImageField(upload_to='establecimiento/banner', null=False)
-    imagen_banner = models.ImageField(upload_to='establecimiento/imagen', null=False)
->>>>>>> 4fd5d7e9d25e244a5947246e4a8acce786c89eea
     slug = models.SlugField(max_length=250, null=False, blank=True)
 
     def __str__(self):
@@ -90,10 +72,6 @@ class Establecimientos(models.Model):
 
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 4fd5d7e9d25e244a5947246e4a8acce786c89eea
 class Contacto(models.Model):
     nombre = models.CharField(max_length=50)
     telefono = models.IntegerField()
