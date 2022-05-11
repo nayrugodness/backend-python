@@ -1,5 +1,5 @@
 from django import forms
-from .models import Contacto, Reserva, Establecimientos, Menu, Comida
+from .models import Contacto, Reserva, Establecimientos
 from django.db.models import fields
 from django.forms import widgets, ValidationError
 from django.contrib.auth.forms import UserCreationForm
@@ -19,17 +19,6 @@ class ReservaForm(forms.ModelForm):
         model = Reserva
         fields = '__all__'
 
-class Menu(forms.ModelForm):
-
-    class Meta:
-        model = Menu
-        fields = '__all__'
-
-class Comida(forms.ModelForm):
-
-    class Meta:
-        model = Comida
-        fields = '__all__'
 
 
 class EstablecimientosForm(forms.ModelForm):

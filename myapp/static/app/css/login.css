@@ -35,6 +35,22 @@
     justify-content:space-evenly;
     border-radius: 2rem;
 }
+.formulario-registro{
+    width: 28rem;
+    height: 90vh;
+    background-color:white;
+    opacity:100%;
+    border: white 2px solid;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    align-text:center;
+    justify-content:center;
+    border-radius: 2rem;
+    padding:1rem;
+    font-size: 0.9rem;
+}
+
 .campo-input{
     width: 100vw;
     height: 2rem;
@@ -43,7 +59,8 @@
 .btnLogin{
     width: 20rem;
     height: 3rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
     border-radius: 0.5rem;
     background-color: rgba(150, 50, 71, 1);
     border: transparent;

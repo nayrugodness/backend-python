@@ -5,7 +5,7 @@
     {% load crispy_forms_tags %}
 
     {% block css %}
-        <link rel="stylesheet" href="{% static 'app/css/register.css' %}">
+        <link rel="stylesheet" href="{% static 'app/css/login.css' %}">
     {% endblock css %}
 
 
@@ -16,54 +16,45 @@
 
     {% block contenido_principal %}
 
-        <section class="form_wrap">
-            <section class="contacto_info">
-                <section class="info_titulo">
-                    <span class="fas fa-user-circle"></span>
-                    <h2>INFORMACION<br>DE CONTACTO</h2>
-                </section>
-                <section class="info_items">
-                    <p><span class="fas fa-envelope"></span> Chikiswaffles@gmail.com </p>
-                    <p>Este formulario es para Registrarse en la aplicacion.</p>
-                </section>
-            </section>
+    <div class="formularios-background">
+        <div class="formularios-filtro">
 
-            <form method="post" class="formulario" action="">
+            <form method="post" class="formulario-registro" action="">
             {% csrf_token %}
 
                 <h2>Registrate</h2>
 
-                <div class="user_info">
-
                     {{ form | crispy }}
 
-                    {% comment %} <label for="usernames"><span class="fas fa-user-alt"></span>Nombre de usuario*</label>
-                    <input type="text" id="usernames" name="usernames" required>
+                    {% comment %}
+                    <label for="username">Nombre de usuario*</label>
+                    <input type="text"  id="username" name="usernames" required>
 
-                    <label for="names"><span class="fas fa-user-alt"></span>Nombres</label>
-                    <input type="text" id="names" name="names">
+                    <label for="first_name">Nombre de usuario*</label>
+                    <input type="text"  id="first_name" name="usernames" required>
 
-                    <label for="email"><span class="fas fa-envelope"></span>Correo Electronico*</label>
-                    <input type="email" id="email" name="email" required>
+                    <label for="last_name">Nombre de usuario*</label>
+                    <input type="text"  id="last_name" name="usernames" required>
 
-                    <label for="password1"><span class="fas fa-unlock-alt"></span>Contraseña*</label>
+                    <label for="email">Correo Electronico*</label>
+                    <input type="email"  id="email" name="email" required>
+
+                    <label for="password1">Contraseña*</label>
                     <input type="password" id="password1" name="password1" required>
 
-                    <label for="password2"><span class="fas fa-unlock-alt"></span>Confirmar contraseña*</label>
-                    <input type="password" id="password2" name="password2" required> {% endcomment %}
+                    <label for="password2">Confirmar contraseña*</label>
+                    <input type="password"  id="password2" name="password2" required>
 
-                    <input type="submit" value="Registrarse" id="btnSend">
+                    {% endcomment %}
 
+                    <input type="submit" value="Registrarse" class="btnLogin">
+                    <a class="btn-sec" href="{% url 'login' %}">Inicia Sesión </a>
                 </div>
 
-                <div class="parrafos">
-                    <p>Al registrarte, aceptas nuestras Condiciones de uso y Politica de privacidad.</p>
-                    <p>¿Ya tienes una Cuenta? <a href="{% url 'login' %}"><span class="fas fa-hand-point-right"></span>
-                            Inicia Sesión </a></p>
-                </div>
 
             </form>
 
-        </section>
+        </div>
+    </div>
 
     {% endblock contenido_principal %}

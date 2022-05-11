@@ -8,15 +8,6 @@ class Categorias(models.Model):
     def __str__(self):
         return self.nombre
 
-class Servicios(models.Model):
-    id = models.AutoField(primary_key=True)
-    nombre = models.CharField(max_length=50)
-    descripcion = models.TextField()
-    precio = models.CharField(max_length=20)
-
-    def __str__(self):
-        return self.nombre
-
 
 TIPO_ESTABLECIMIENTO = (
    ('Restaurante', 'Restaurante'),
@@ -26,33 +17,11 @@ TIPO_ESTABLECIMIENTO = (
 )
 
 
-class Comida(models.Model):
-    id = models.AutoField(primary_key=True)
-    nombre = models.CharField(max_length=50)
-    descripcion = models.TextField()
-    precio = models.CharField(max_length=20)
-    imagen = models.ImageField(upload_to='establecimientos/platillo', null=False)
-
-
-    def __str__(self):
-        return self.nombre
-
-class Menu(models.Model):
-    id = models.AutoField(primary_key=True)
-
-    nombre = models.SlugField(max_length=250, null=False, blank=True)
-    comida = models.ManyToManyRel(to=Comida, field=id)
-
-    def __str__(self):
-        return self.nombre
-
-
 
 class Establecimientos(models.Model):
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=50)
     categoria = models.ForeignKey(Categorias, on_delete=models.PROTECT)
-    menu = models.ForeignKey(Menu, on_delete=models.PROTECT)
     ciudad = models.CharField(max_length=40)
     departamento = models.CharField(max_length=40)
     rango_precios = models.CharField(max_length=50)
@@ -98,7 +67,7 @@ class Reserva(models.Model):
     apellido = models.CharField(max_length=50)
     correo = models.EmailField(blank=True, null=True)
     telefono = models.IntegerField()
-    comensales = models.IntegerField(max_length=100)
+    comensales = models.IntegerField()
     establecimiento = models.ForeignKey(Establecimientos, on_delete=models.PROTECT)
     creado = models.DateField(auto_now_add=True)
     editado = models.DateField(auto_now=True)

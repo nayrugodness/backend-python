@@ -20,46 +20,10 @@
     color: white;
 }
 
-@media only screen and (max-width: 600px) {
-    .menu{
-        width: 100vw;
-        height:100vh;
-        background-color:grey;
-    }
+.e-menu{
+   width: 100vw;
+   height:100vh;
+   display: flex;
+   flex-direction: row;
+   background-color: grey;
 }
-<<<<<<< HEAD
-
-@media only screen and (min-width: 600px) {...}
-
-@media only screen and (min-width: 768px) {...}
-
-@media only screen and (min-width: 992px) {...}
-
-@media only screen and (min-width: 1200px) {...}
-=======
-.menu-e{
-   display:flex;
-    width: 60vw;
-    padding: 2rem;
-    border: 1px solid black;
-    margin-bottom:2rem;
-}
-.contenedor-secundario{
-    display:flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    width: 30vw;
-    border: 1px solid black;
-}
-.horario{
-    width: 100%;
-    border: 1px solid black;
-}
-.foto-e{
-    width: 100%;
-    border: 1px solid black;
-}
-.foto{
-    width: 100%;
-}
->>>>>>> 4fd5d7e9d25e244a5947246e4a8acce786c89eea

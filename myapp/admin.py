@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Categorias, Establecimientos, Contacto, Servicios, Menu, Comida, Reserva
+from .models import Categorias, Establecimientos, Contacto, Reserva
 
 from .forms import EstablecimientosForm
 
@@ -19,8 +19,6 @@ class EstablecimientosAdmin(admin.ModelAdmin):
 admin.site.register(Categorias)
 admin.site.register(Establecimientos, EstablecimientosAdmin)
 admin.site.register(Contacto)
-admin.site.register(Servicios)
-admin.site.register(Menu)
-admin.site.register(Comida)
+
 
 

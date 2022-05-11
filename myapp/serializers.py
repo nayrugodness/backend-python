@@ -1,5 +1,5 @@
 from django.db.models.query import QuerySet
-from .models import Categorias, Establecimientos, Servicios
+from .models import Categorias, Establecimientos
 from rest_framework import fields, serializers
 
 
@@ -32,9 +32,3 @@ class EstablecimientosSerializer(serializers.ModelSerializer):
         model = Establecimientos
         fields = '__all__'
         #exclude = ['']
-
-class ServiciosSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Servicios
-        fields = '__all__'
