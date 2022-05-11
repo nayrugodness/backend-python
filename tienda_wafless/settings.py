@@ -9,8 +9,8 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
-from pathlib import Path, os
+import os
+from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -49,10 +49,13 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'pwa',
     'crispy_forms',
+    'tailwind',
+    'hoisu'
 ]
+TAILWIND_APP_NAME = 'hoisu'
 
+NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
 X_SAME_OPTIONS = 'SAMEORIGIN'
 
 MIDDLEWARE = [
