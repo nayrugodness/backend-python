@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'myapp.apps.MyappConfig',
     'rest_framework',
     'colorfield',
     'django.contrib.humanize',
@@ -52,7 +51,7 @@ INSTALLED_APPS = [
     "crispy_tailwind",
     'tailwind',
     'hoisu',
-    'django_browser_reload',
+    'main',
 
 ]
 TAILWIND_APP_NAME = 'hoisu'
@@ -72,7 +71,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django_browser_reload.middleware.BrowserReloadMiddleware',
+
 ]
 
 ROOT_URLCONF = 'tienda_wafless.urls'
