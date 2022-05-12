@@ -48,12 +48,18 @@ INSTALLED_APPS = [
     'colorfield',
     'django.contrib.humanize',
     'pwa',
-    'crispy_forms',
+    "crispy_forms",                     # new
+    "crispy_tailwind",
     'tailwind',
-    'hoisu'
+    'hoisu',
+    'django_browser_reload',
+
 ]
 TAILWIND_APP_NAME = 'hoisu'
 
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
+
+CRISPY_TEMPLATE_PACK = "tailwind"
 NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 X_SAME_OPTIONS = 'SAMEORIGIN'
@@ -66,6 +72,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_browser_reload.middleware.BrowserReloadMiddleware',
 ]
 
 ROOT_URLCONF = 'tienda_wafless.urls'

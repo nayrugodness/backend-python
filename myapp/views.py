@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRedirect
 from .models import Categorias, Establecimientos
 from .forms import ContactoForm, EstablecimientosForm, CustomUserCreationForm
 from django.contrib import messages

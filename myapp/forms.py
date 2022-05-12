@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth import authenticate
 from .models import Contacto, Reserva, Establecimientos
 from django.db.models import fields
 from django.forms import widgets, ValidationError
@@ -51,3 +52,4 @@ class CustomUserCreationForm(UserCreationForm):
         model = User
         fields = ['username', 'first_name', 'last_name',
                   'email', 'password1', 'password2']
+
