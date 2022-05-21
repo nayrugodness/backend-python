@@ -5,7 +5,6 @@ from rest_framework import routers
 
 router = routers.DefaultRouter()
 router.register('establecimientos', views.ProductosViewset)
-router.register('categoria', views.CategoriasViewset)
 
 # localhost:8000/api/producto/
 

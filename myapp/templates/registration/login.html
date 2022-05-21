@@ -1,57 +1,57 @@
-{% extends 'app/layout.html' %}
+<!doctype html>
+<html lang="en">
+<head>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hoisu C&R</title>
 
     {% load static %}
 
-    {% load crispy_forms_tags %}
+    <link rel="icon" type="image/png" href="{% static 'app/images/HoisuC&R.png' %}">
 
     {% block css %}
-        <link rel="stylesheet" href="{% static 'app/css/login.css' %}">
-    {% endblock css %}
-
-    {% block js %}
-        <script src="{% static 'app/js/login.js' %}"></script>
-    {% endblock js %}
-
-
-    {% block contenido_principal %}
-
-<div class="formularios-background">
-
-    <div class="formularios-filtro">
-        <form method="POST" class="formulario">
-
-                    {% csrf_token %}
-
-                        <h2>Login</h2>
-
-                        <div class="">
-
-                        {{ form | crispy }}
-
-                            {% comment %}
-                            <label  for="usernames">
-                                Nombre de usuario
-                            </label>
-                            <input class="campo-input" type="text" id="usernames" name="usernames" required>
-
-                            <label class="campo-input" for="password1">
-                                Contraseña
-                            </label>
-                            <input class type password" id="password1" name="password1" required> {% endcomment %}
-
-                            <input type="submit" value="Iniciar Sesión" id="btnSend" class="btnLogin">
-
-                        </div>
-
-                        <div class="">
-
-                            <p>¿No tienes una Cuenta? <a class="btn-sec" href="{% url 'registro' %}"> Registrate </a></p>
-                        </div>
-        </form>
-    </div>
-</div>
-
-
-
-
     {% endblock %}
+    <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+          integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"
+        />
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/login.css' %}">
+
+    {% load pwa %}
+
+    {% progressive_web_app_meta %}
+
+</head>
+</head>
+<body>
+{% load crispy_forms_tags %}
+    <section class="container">
+        <div class="login-form">
+            <form method="POST" class="">
+                {% csrf_token %}
+                    <h2> Inicia sesión </h2>
+                    {{ form | crispy }}
+                    {% comment %}
+
+                        <label for="usernames" >
+                            <h2 class="title-label">Nombre de usuario</h2>
+                        </label>
+                        <input type="text" id="usernames" name="usernames" required class="input-field">
+                        <label for=password class="title-label">
+                            <h2 class="title-label">Contraseña</h2>
+                        </label>
+                        <input type="password" id="password" name="password" required class="input-field">
+
+                    {% endcomment %}
+                    <input type="submit" value="Iniciar sesión" class="btn btn-primary">
+            </form>
+        </div>
+    </section>
+</body>
+</html>

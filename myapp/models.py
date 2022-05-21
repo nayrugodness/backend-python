@@ -2,37 +2,32 @@ from django.db import models
 # Create your models here.
 
 
-class Categorias(models.Model):
-    nombre = models.CharField(max_length=50, primary_key=True)
 
-    def __str__(self):
-        return self.nombre
-
-
-TIPO_ESTABLECIMIENTO = (
-   ('Restaurante', 'Restaurante'),
-   ('Cafeteria', 'Cafeteria'),
-   ('Bar', 'Bar'),
-   ('CafeBar', 'CafeBar')
+Categoria=(
+    ('Buffet', 'Buffet'),
+    ('Comida rápida', 'Comida rápida'),
+    ('Casual', 'Casual'),
+    ('De autor', 'De autor'),
+    ('Gourmet', 'Gourmet'),
+    ('Temático', 'Temático')
 )
-
 class Establecimientos(models.Model):
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=50)
-    categoria = models.ForeignKey(Categorias, on_delete=models.PROTECT)
     ciudad = models.CharField(max_length=40)
     departamento = models.CharField(max_length=40)
-    rango_precios = models.CharField(max_length=50)
+    precio_min = models.CharField(max_length=10)
+    precio_max = models.CharField(max_length=50)
     parqueadero = models.BooleanField()
     correo = models.EmailField()
     tarjeta_credito = models.BooleanField()
     tarjetas_debito = models.BooleanField()
     descripcion = models.TextField()
-    tipo = models.CharField(max_length=20, choices=TIPO_ESTABLECIMIENTO, default='Restaurante')
+    tipo = models.CharField(max_length=20, choices=Categoria, default="Gourmet")
     direccion = models.CharField(max_length=50)
     imagen = models.ImageField(upload_to='establecimientos/foto-principal', null=False)
     imagen_banner = models.ImageField(upload_to='establecimientos/banner', null=False)
-    slug = models.SlugField(max_length=250, null=False, blank=True)
+    slug = models.SlugField()
 
     def __str__(self):
         return self.nombre

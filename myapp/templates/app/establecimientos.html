@@ -1,38 +1,57 @@
-{% extends 'app/index.html' %}
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hoisu C&R</title>
 
-{% block contenido_principal %}
-{% load static %}
-{% load humanize %}
-{% block destacados %}
+    {% load static %}
 
-<div class="titulo-seccion">
-    <h2 class="titulo">Restaurantes</h2>
-</div>
- <section class="establecimientos">
+    <link rel="icon" type="image/png" href="{% static 'app/images/HoisuC&R.png' %}">
 
-        {% for e in establecimientos %}
+    {% block css %}
+    {% endblock %}
+    <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+          integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"
+        />
 
-                 <div class="e-destacado">
-                    <img class="e-imagen" src="{{ e.imagen.url }}">
-                    <h4 class="titulo">{{ e.nombre }}</h4>
-                    <div class="caracteristicas">
-                        <strong><p class="caracteristica">Categoría : {{ e.categoria }}</p></strong>
-                        <p class="caracteristica">Departamento : {{ e.departamento }}</p>
-                        <p class="caracteristica">Ciudad : {{ e.ciudad }} </p>
-                        <p class="caracteristica">Rango de precios : {{ e.rango_precios }}</p>
 
-                    </div>
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/style.css' %}">
 
-                    {% if user.is_authenticated %}
-                        <button class="btn-ver">
-                             <a href='/establecimiento/{{ e.slug }}' class=”btn-ver”>Ver establecimiento</a>
-                        </button>
+    {% load pwa %}
 
+    {% progressive_web_app_meta %}
+
+</head>
+<body>
+<section id="food">
+      <h2>Mejores Restaurantes</h2>
+
+
+      <div class="food-container container">
+          {% for r in establecimientos %}
+            <div class="food-type">
+              <div class="img-container">
+                <img src="{{ r.imagen_banner.url }}" alt="error" />
+                <div class="img-content">
+                  <h3>{{ r.nombre }}</h3>
+
+                   {% if user.is_authenticated %}
+                      <a
+                        href='/establecimiento/{{ r.slug }}'
+                        class="btn btn-primary"
+                        >Ver más</a
+                      >
                     {% endif %}
-                 </div>
-
-        {% endfor %}
- </section>
-
-{% endblock %}
-{% endblock %}
+                </div>
+              </div>
+            </div>
+           {% endfor %}
+      </div>
+    </section>
+</body>
+</html>

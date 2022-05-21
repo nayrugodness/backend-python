@@ -1,60 +1,52 @@
-
-.formularios-background{
-    width: 100vw;
-    height: 100vh;
-    background-image: url(../images/forms.jpg);
-    background-size: 100vw 100vh;
-    display:flex;
-    flex-direction: column;
-    align-items:center;
-    justify-content:space-around;
+body{
+    padding: 0;
+    margin: 0;
 }
-.formularios-filtro{
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(150, 50, 71, 0.5);
-    background-size: 100vw 100vh;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100vw 100vh;
-    display:flex;
-    flex-direction: column;
-    align-items:center;
-    justify-content:space-around;
+.container{
+     height: 100vh;
+  background: /*linear-gradient(
+      rgba(240, 240, 240, 0.144),
+      rgba(255, 255, 255, 0.336)
+    ),*/
+    url("https://images.pexels.com/photos/1833349/pexels-photo-1833349.jpeg?cs=srgb&dl=pexels-valeria-boltneva-1833349.jpg&fm=jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.formulario{
-    width: 24rem;
-    height: 32rem;
-    background-color:white;
-    opacity:100%;
-    border: white 2px solid;
-    display:flex;
-    flex-direction: column;
-    align-items:center;
-    align-text:center;
-    justify-content:space-evenly;
-    border-radius: 2rem;
+.login-form{
+    width: 25rem;
+    height: 40rem;
+    background: white;
+    text-align:center;
 }
-.campo-input{
-    width: 100vw;
-    height: 2rem;
-    align-text:center;
+.title-label{
+    margin-bottom: 2rem;
+    color: #AC0202;
 }
-.btnLogin{
+.input-field{
     width: 20rem;
-    height: 3rem;
-    margin-top: 2rem;
-    border-radius: 0.5rem;
-    background-color: rgba(150, 50, 71, 1);
-    border: transparent;
-    color:white;
+    height: 2rem;
 }
-.btnLogin:hover{
-    background-color: rgba(135, 47, 57, 1);
+.btn {
+  display: inline-block;
+  padding: 1em 5em;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  margin-top: 1.5em;
+  text-transform: uppercase;
+  font-weight: small;
 }
-.btn-sec{
-    color: rgba(150, 50, 71, 0.5);
+
+.btn-primary {
+  color: #fff;
+  background: #AC0202;
 }
-.btn-sec:hover{
-    color: rgba(135, 47, 57, 1);
+
+.btn-primary:hover {
+  background: #710000;
+  transition: background 0.3s ease-in-out;
 }

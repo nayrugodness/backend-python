@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
-from .models import Categorias, Establecimientos
+from .models import Establecimientos
 from .forms import ContactoForm, EstablecimientosForm, CustomUserCreationForm
 from django.contrib import messages
 from django.core.paginator import Paginator
@@ -7,7 +7,7 @@ from django.http import Http404
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required, permission_required
 from rest_framework import viewsets
-from .serializers import EstablecimientosSerializer, CategoriasSerializer
+from .serializers import EstablecimientosSerializer
 from django.views.generic import ListView, CreateView, DetailView
 
 # Create your views here.
@@ -163,6 +163,3 @@ class ProductosViewset(viewsets.ModelViewSet):
             return productos
 
 
-class CategoriasViewset(viewsets.ModelViewSet):
-    queryset = Categorias.objects.all()
-    serializer_class = CategoriasSerializer
