@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'pwa',
     'crispy_forms',
+    'tailwind',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

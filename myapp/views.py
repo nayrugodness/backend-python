@@ -31,7 +31,7 @@ def establecimientos(request):
         'establecimientos': establecimientos
     }
 
-    return render(request, 'app/productos.html', data)
+    return render(request, 'app/establecimientos.html', data)
 
 
 def contacto(request):
@@ -80,7 +80,8 @@ def registro(request):
     return render(request, 'registration/registro.html', data)
 
 
-@permission_required('myapp.add_establecimientos')
+
+
 def agregar_producto(request):
     data = {
         'form': EstablecimientosForm()
