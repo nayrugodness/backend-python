@@ -1,7 +1,13 @@
 from django.db import models
 # Create your models here.
 
-
+class ItemMenu(models.Model):
+    nombre = models.CharField(max_length=50)
+    id = models.AutoField(primary_key=True)
+    descripcion = models.TextField()
+    foto = models.ImageField(upload_to='establecimientos/platillo', null=False)
+    def __str__(self):
+       return self.nombre
 
 Categoria=(
     ('Buffet', 'Buffet'),
@@ -18,6 +24,7 @@ class Establecimientos(models.Model):
     departamento = models.CharField(max_length=40)
     precio_min = models.CharField(max_length=10)
     precio_max = models.CharField(max_length=50)
+    platillo = models.ManyToManyField(ItemMenu)
     parqueadero = models.BooleanField()
     correo = models.EmailField()
     tarjeta_credito = models.BooleanField()
