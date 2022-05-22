@@ -186,6 +186,9 @@
               </div>
             </div>
             <div class="card-body">
+              {% for i in object.platillo.all %}
+              <h3>{{ i.nombre }} </h3>
+              {% endfor %}
               <!--<form>
                 <h6 class="heading-small text-muted mb-4">User information</h6>
                 <div class="pl-lg-4">
