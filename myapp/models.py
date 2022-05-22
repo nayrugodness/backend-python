@@ -6,8 +6,7 @@ class ItemMenu(models.Model):
     id = models.AutoField(primary_key=True)
     descripcion = models.TextField()
     foto = models.ImageField(upload_to='establecimientos/platillo', null=False)
-    def __str__(self):
-       return self.nombre
+
 
 Categoria=(
     ('Buffet', 'Buffet'),
