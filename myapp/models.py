@@ -6,7 +6,7 @@ class ItemMenu(models.Model):
     id = models.AutoField(primary_key=True)
     descripcion = models.TextField()
     foto = models.ImageField(upload_to='establecimientos/platillo', null=False)
-
+    precio = models.CharField(max_length=10)
 
 Categoria=(
     ('Buffet', 'Buffet'),
