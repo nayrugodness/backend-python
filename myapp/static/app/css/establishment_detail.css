@@ -2030,8 +2030,8 @@ p {
   margin-bottom: 20px;
 }
 .wrapper {
-  height: 420px;
-  width: 654px;
+  height: 200px;
+  width: 90%;
   margin: 50px auto;
   border-radius: 7px 7px 7px 7px;
   /* VIA CSS MATIC https://goo.gl/cIbnS */
@@ -2042,32 +2042,35 @@ p {
 
 .product-img {
   float: left;
-  height: 420px;
-  width: 327px;
+  height: 200px;
+  width: 35%;
 }
 
 .product-img img {
   border-radius: 7px 0 0 7px;
+  object-fit: cover;
 }
 
 .product-info {
   float: left;
-  height: 420px;
-  width: 327px;
+  height: 200px;
+  width: 65%;
   border-radius: 0 7px 10px 7px;
   background-color: #ffffff;
 }
 
 .product-text {
-  height: 300px;
-  width: 327px;
+  height: 100%;
+  width: 100%;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
 }
 
 .product-text h1 {
-  margin: 0 0 0 38px;
-  padding-top: 52px;
-  font-size: 34px;
-  color: #474747;
+  padding-bottom: 0.3em;
+  font-size: 2em;
+  color: #AC0202;
 }
 
 .product-text h1,
@@ -2076,23 +2079,19 @@ p {
 }
 
 .product-text h2 {
-  margin: 0 0 47px 38px;
-  font-size: 13px;
+  float: right;
+  font-size: 1em;
   font-family: 'Raleway', sans-serif;
   font-weight: 400;
   text-transform: uppercase;
-  color: #d2d2d2;
-  letter-spacing: 0.2em;
+  color: #AC0202;
 }
 
 .product-text p {
-  height: 125px;
-  margin: 0 0 0 38px;
+  height: 60%;
   font-family: 'Playfair Display', serif;
   color: #8d8d8d;
-  line-height: 1.7em;
-  font-size: 15px;
-  font-weight: lighter;
+  font-size: 1.2em;
   overflow: hidden;
 }
 
@@ -2117,9 +2116,9 @@ p {
 
 span {
   display: inline-block;
-  height: 50px;
+  height: 2em;
   font-family: 'Suranna', serif;
-  font-size: 34px;
+  font-size: 1em;
 }
 
 .product-price-btn button {
