@@ -17,7 +17,7 @@
           referrerpolicy="no-referrer"
         />
 
-    <link rel="stylesheet" type="text/css" href="{% static 'app/css/register-restaurant.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/style.css' %}">
 
     {% load pwa %}
 
@@ -25,6 +25,15 @@
 
 </head>
 <body>
-
+{% load crispy_forms_tags %}
+    <section class="showcase-area" id="showcase">
+      <div class="showcase-container">
+        <!--<h1 class="main-title" id="home">Bienvenido a Hoisu C&R</h1>
+        <p class="description-title">Deliciosa comida y una  asombrosa experiencia gastronómica</p>
+        <a href="#food-menu" class="btn btn-primary">Reservar</a>-->
+          {% csrf_token %}
+          {{ form | crispy }}
+      </div>
+    </section>
 </body>
 </html>
