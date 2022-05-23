@@ -187,7 +187,18 @@
             </div>
             <div class="card-body">
               {% for i in object.platillo.all %}
-              <h3>{{ i.nombre }} </h3>
+              <!--<h3>{{ i.nombre }} </h3> <span>${{ i.precio }}</span>-->
+                <div class="row" style="margin:1em;">
+                  <div class="flip flip-vertical">
+                    <div class="front" style="background-image: url(https://images.pexels.com/photos/38136/pexels-photo-38136.jpeg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb)">
+                       <h1 class="text-shadow">FOREST</hi>
+                    </div>
+                    <div class="back">
+                       <h2>Angular</h2>
+                       <p>Good tools make application development quicker and easier to maintain than if you did everything by hand..</p>
+                    </div>
+                  </div>
+                </div>
               {% endfor %}
               <!--<form>
                 <h6 class="heading-small text-muted mb-4">User information</h6>
