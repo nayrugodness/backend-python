@@ -1,55 +1,30 @@
-{% extends 'app/layout.html' %}
+<!doctype html>
+<html lang="es">
 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hoisu C&R</title>
     {% load static %}
-
+    <link rel="icon" type="image/png" href="{% static 'app/images/HoisuC&R.png' %}">
     {% block css %}
-    {% comment %} <style>
+    {% endblock %}
+    <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+          integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"
+        />
 
-        .form-control{
-            width: 95%;
-        }
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/register-restaurant.css' %}">
 
-    </style> {% endcomment %}
+    {% load pwa %}
 
-    {% endblock css %}
+    {% progressive_web_app_meta %}
 
-    {% block contenido_principal %}
+</head>
+<body>
 
-    {% load crispy_forms_tags %}
-
-    <br>
-    <br>
-    <br>
-    <div class="row">
-        <div class="col-12 col-md-6 offset-md-3">
-            <div class="card">
-                <div class="card-body">
-
-                    <h2>Agregar Productos</h2>
-                    <p>Este formulario es para agregar Productos.</p>
-                    <hr>
-                    <form action="" method="post" enctype="multipart/form-data">
-
-                        {% csrf_token %}
-                        {{ form | crispy }}
-
-                        <hr>
-                        <br>
-                        <div class="d-flex justify-content-end">
-                            
-                            <input type="submit" value="Cancelar" class="btn btn-secondary">
-                            &nbsp;
-                            <input type="submit" value="Guardar" class="btn btn-primary">
-                        </div>
-
-                    </form>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <br>
-    <br>
-    <br>
-
-    {% endblock contenido_principal %}
+</body>
+</html>
