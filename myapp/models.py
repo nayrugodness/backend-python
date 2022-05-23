@@ -1,4 +1,6 @@
 from django.db import models
+from django.template.defaultfilters import slugify
+
 # Create your models here.
 
 class ItemMenu(models.Model):
@@ -33,7 +35,11 @@ class Establecimientos(models.Model):
     direccion = models.CharField(max_length=50)
     imagen = models.ImageField(upload_to='establecimientos/foto-principal', null=False)
     imagen_banner = models.ImageField(upload_to='establecimientos/banner', null=False)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(max_length=250)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name, allow_unicode=True)
+        return super(Establecimientos, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.nombre
