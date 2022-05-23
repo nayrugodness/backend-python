@@ -33,7 +33,7 @@ class Establecimientos(models.Model):
     direccion = models.CharField(max_length=50)
     imagen = models.ImageField(upload_to='establecimientos/foto-principal', null=False)
     imagen_banner = models.ImageField(upload_to='establecimientos/banner', null=False)
-    slug = models.SlugField()
+    slug = models.SlugField(unique=True)
 
     def __str__(self):
         return self.nombre

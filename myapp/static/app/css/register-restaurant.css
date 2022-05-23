@@ -1,7 +1,10 @@
 /* ............//// Showcase styling ////......... */
-
+body{
+    padding:0;
+    margin:0;
+}
 .showcase-area {
-  height: 100vh;
+
   background: /*linear-gradient(
       rgba(240, 240, 240, 0.144),
       rgba(255, 255, 255, 0.336)
