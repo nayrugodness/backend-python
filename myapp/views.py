@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from .models import Establecimientos
-from .forms import ContactoForm, EstablecimientosForm, CustomUserCreationForm
+from .forms import ContactoForm, EstablecimientosForm, CustomUserCreationForm, ReservaForm
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.http import Http404
@@ -58,6 +58,25 @@ class EstablecimientoDetailView(DetailView):
     def get_object(self):
         slug = self.kwargs.get('slug')
         return get_object_or_404(Establecimientos, slug=slug)
+
+    def reserva(request):
+        data = {
+            'form': ReservaForm()
+        }
+
+        if request.method == 'POST':
+            formulario = ReservaForm(data=request.POST)
+            if formulario.is_valid():
+                formulario.save()
+                user = authenticate(
+                    username=formulario.cleaned_data['username'], password=formulario.cleaned_data['password1'])
+                login(request, user)
+                messages.success(request, 'Te haz registrado correctamente')
+                return redirect(to='index')
+            else:
+                data['form'] = formulario
+
+        return render(request, 'app/detalle.html', data)
 
 
 def registro(request):

@@ -698,15 +698,15 @@ textarea.form-control {
 
 .btn-default {
   color: #fff;
-  border-color: #172b4d;
-  background-color: #172b4d;
+  border-color: #a2aa56;
+  background-color: #a2aa56;
   box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
 }
 
 .btn-default:hover {
   color: #fff;
-  border-color: #172b4d;
-  background-color: #172b4d;
+  border-color: #566910;
+  background-color: #566910;
 }
 
 .btn-default:focus {

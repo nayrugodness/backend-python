@@ -1,5 +1,5 @@
 from django import forms
-from .models import Contacto, Reserva, Establecimientos
+from .models import Contacto, Reserva, Establecimientos, ItemMenu
 from django.db.models import fields
 from django.forms import widgets, ValidationError
 from django.contrib.auth.forms import UserCreationForm
@@ -26,6 +26,10 @@ class EstablecimientosForm(forms.ModelForm):
     imagen = forms.ImageField(required=False, validators=[
                               MaxSizeFileValidator(max_file_size=16)])
 
+    #platillo = forms.ModelMultipleChoiceField(
+    #    queryset=ItemMenu.objects.all(),
+    #    widget=forms.CheckboxSelectMultiple
+    #)
     # def clean_nombre(self):
     #     nombre = self.cleaned_data['nombre']
     #     existe = Producto.objects.filter(nombre__iexact=nombre).exists()
