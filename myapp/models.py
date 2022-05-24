@@ -34,7 +34,7 @@ Ciudad=(
 class Establecimientos(models.Model):
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=50)
-    ciudad = models.CharField(max_length=20, choices=Ciudad)
+    ciudad = models.CharField(max_length=20, choices=Ciudad, default="Armenia")
     precio_min = models.CharField(max_length=10)
     precio_max = models.CharField(max_length=50)
     platillo = models.ManyToManyField(ItemMenu)
