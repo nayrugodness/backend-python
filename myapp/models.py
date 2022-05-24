@@ -18,11 +18,23 @@ Categoria=(
     ('Gourmet', 'Gourmet'),
     ('Temático', 'Temático')
 )
+Ciudad=(
+    ('Armenia', 'Armenia'),
+    ('Buenavista', 'Buenavista'),
+    ('Calarcá', 'Calarcá'),
+    ('Circasia', 'Circasia'),
+    ('Córdoba', 'Córdoba'),
+    ('Filandia', 'Filandia'),
+    ('Génova', 'Génova'),
+    ('Montenegro', 'Montenegro'),
+    ('Pijao', 'Pijao'),
+    ('Salento', 'Salento')
+)
+
 class Establecimientos(models.Model):
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=50)
-    ciudad = models.CharField(max_length=40)
-    departamento = models.CharField(max_length=40)
+    ciudad = models.CharField(max_length=20, choices=Ciudad)
     precio_min = models.CharField(max_length=10)
     precio_max = models.CharField(max_length=50)
     platillo = models.ManyToManyField(ItemMenu)
