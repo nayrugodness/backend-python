@@ -35,11 +35,9 @@ class Establecimientos(models.Model):
     direccion = models.CharField(max_length=50)
     imagen = models.ImageField(upload_to='establecimientos/foto-principal', null=False)
     imagen_banner = models.ImageField(upload_to='establecimientos/banner', null=False)
-    slug = models.SlugField(max_length=250)
+    slug = models.SlugField(unique=True)
 
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.name, allow_unicode=True)
-        return super(Establecimientos, self).save(*args, **kwargs)
+
 
     def __str__(self):
         return self.nombre
