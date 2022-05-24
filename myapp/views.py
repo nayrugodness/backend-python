@@ -8,7 +8,8 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required, permission_required
 from rest_framework import viewsets
 from .serializers import EstablecimientosSerializer
-from django.views.generic import ListView, CreateView, DetailView
+from django.views.generic import ListView, CreateView, DetailView, FormView
+
 
 # Create your views here.
 
@@ -51,32 +52,45 @@ def contacto(request):
     return render(request, 'app/contacto.html', data)
 
 
-class EstablecimientoDetailView(DetailView):
+#class EstablecimientoDetailView(DetailView):
 
+#    template_name = 'app/detalle.html'
+#    queryset = Establecimientos.objects.all()
+#    def get_object(self):
+#        slug = self.kwargs.get('slug')
+#        return get_object_or_404(Establecimientos, slug=slug)
+
+#    def reserva(request):
+#        data = {
+#            'form': ReservaForm()
+#        }
+
+#        if request.method == 'POST':
+#            formulario = ReservaForm(data=request.POST)
+#            if formulario.is_valid():
+#                formulario.save()
+#                user = authenticate(
+#                    username=formulario.cleaned_data['username'], password=formulario.cleaned_data['password1'])
+#                login(request, user)
+#                messages.success(request, 'Te haz registrado correctamente')
+#                return redirect(to='index')
+#            else:
+#                data['form'] = formulario
+
+#        return render(request, 'app/detalle.html', data)
+
+class EstablecimientoFormView(FormView, DetailView):
+    model = Establecimientos
+    form_class = ReservaForm
     template_name = 'app/detalle.html'
-    queryset = Establecimientos.objects.all()
-    def get_object(self):
-        slug = self.kwargs.get('slug')
-        return get_object_or_404(Establecimientos, slug=slug)
 
-    def reserva(request):
-        data = {
-            'form': ReservaForm()
-        }
+    def get_context_data(self, **kwargs):
+        context = super(EstablecimientoFormView, self).get_context_data(**kwargs)
+        context['form'] = self.get_form()
+        return context
 
-        if request.method == 'POST':
-            formulario = ReservaForm(data=request.POST)
-            if formulario.is_valid():
-                formulario.save()
-                user = authenticate(
-                    username=formulario.cleaned_data['username'], password=formulario.cleaned_data['password1'])
-                login(request, user)
-                messages.success(request, 'Te haz registrado correctamente')
-                return redirect(to='index')
-            else:
-                data['form'] = formulario
-
-        return render(request, 'app/detalle.html', data)
+    def post(self, request, *args, **kwargs):
+        return FormView.post(self, request, *args, **kwargs)
 
 
 def registro(request):
