@@ -1,5 +1,5 @@
 from django.db.models.query import QuerySet
-from .models import Establecimientos
+from .models import Establecimientos, Reserva
 from rest_framework import fields, serializers
 
 
@@ -7,8 +7,8 @@ from rest_framework import fields, serializers
 
 class EstablecimientosSerializer(serializers.ModelSerializer):
 
-    nombre_categoria = serializers.CharField(
-        read_only=True, source='categoria.nombre')
+    #nombre_categoria = serializers.CharField(
+    #    read_only=True, source='categoria.nombre')
 
 
     nombre = serializers.CharField(required=True, min_length=3)
@@ -24,5 +24,11 @@ class EstablecimientosSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Establecimientos
+        fields = '__all__'
+        #exclude = ['']
+
+class ReservaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Reserva
         fields = '__all__'
         #exclude = ['']
